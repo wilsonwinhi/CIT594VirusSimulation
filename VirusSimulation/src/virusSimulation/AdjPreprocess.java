@@ -1,23 +1,42 @@
 package virusSimulation;
 import java.util.*;
 public class AdjPreprocess {
-	private Set<String> peopleSet;
+	private Set<People> peopleSet;
 	private int totalPeopleNum;
 	public AdjPreprocess() {
 		peopleSet = new HashSet<>();
 		totalPeopleNum = 0;
 	}
-    public Map<String, Set<String>> adjPreprocess(List<String> s) {
-    	Map<String, Set<String>> adjList = new HashMap<>();
+//    public Map<String, Set<String>> adjPreprocess(List<String> s) {
+//    	Map<String, Set<String>> adjList = new HashMap<>();
+//		for(String each: s) {
+//			String[] people = each.split("\\s+");
+//			if (!adjList.containsKey(people[0])) {
+//				adjList.put(people[0], new HashSet<>());
+//			}
+//			adjList.get(people[0]).add(people[1]);
+//			peopleSet.add(people[0]);
+//			peopleSet.add(people[1]);
+//		}
+//		totalPeopleNum = adjList.size();
+//		return adjList;
+//    }
+    public List<People> adjPreprocess(List<String> s) {
+    	List<People> adjList = new LinkedList<>();
 		for(String each: s) {
 			String[] people = each.split("\\s+");
-			if (!adjList.containsKey(people[0])) {
-				adjList.put(people[0], new HashSet<>());
+			People firstPpl = new People(people[0]);
+			People secondPpl = new People(people[1]);
+			if (!adjList.contains(firstPpl)) {
+				adjList.add(firstPpl);
 			}
-			adjList.get(people[0]).add(people[1]);
-			peopleSet.add(people[0]);
-			peopleSet.add(people[1]);
+			
+			adjList.get(adjList.indexOf(firstPpl)).addPeople(secondPpl);
+			
+			peopleSet.add(firstPpl);
+			peopleSet.add(secondPpl);
 		}
+		
 		totalPeopleNum = adjList.size();
 		return adjList;
     }

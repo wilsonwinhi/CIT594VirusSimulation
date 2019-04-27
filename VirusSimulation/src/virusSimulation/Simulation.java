@@ -10,7 +10,7 @@ public class Simulation {
 		AdjPreprocess preprocessMachine = new AdjPreprocess();
 		
 		/* preprocess to adjacency list */
-		Map<String, Set<String>> adjList = preprocessMachine.adjPreprocess(textList);
+		List<People> adjList = preprocessMachine.adjPreprocess(textList);
 		int totalPeople = preprocessMachine.getTotalPeople();
 		
 		/* process user input */
@@ -22,16 +22,18 @@ public class Simulation {
 		int days = Integer.parseInt(args[2]);
 		
 		/* create seed into queue */
-		Queue<String> q = new LinkedList<>();
-		q.add("0");
+		Queue<People> q = new LinkedList<>();
+		
+		
+		
 		int infectedPeopleNum = 0 + seedNum;
 		test bfs = new test();
-		System.out.println("total people: " + totalPeople);
-		/* run bfs */
-		for (int i = 0; i < days; i++) {
-			infectedPeopleNum += bfs.BFS1Round(adjList, q, probability);
-			System.out.println(infectedPeopleNum);
-		}
+//		System.out.println("total people: " + totalPeople);
+//		/* run bfs */
+//		for (int i = 0; i < days; i++) {
+//			infectedPeopleNum += bfs.BFS1Round(adjList, q, probability);
+//			System.out.println(infectedPeopleNum);
+//		}
 		
 		// BFS1Round
 	}
