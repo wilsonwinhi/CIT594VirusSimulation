@@ -16,8 +16,9 @@ public class People {
 		socialNetwork = new ArrayList<>();
 	}
 	
-	public void infect() {
+	public void gotInfected() {
 		//do nothing there, healthy people cann't infect other people
+		isHealthy = false;
 	}
 	
 	public String getName() {
