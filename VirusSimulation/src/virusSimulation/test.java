@@ -2,15 +2,12 @@ package virusSimulation;
 
 import java.util.*;
 
-
 public class test {
-
-	
 	public int BFS1Round(Map<String,Set<String>> map, Queue<String> storage, double virusProb) {
 		int count = 0;
 		Random random = new Random();
 		int size = storage.size();
-		for(int i = 0;i<size;i++) {
+		for(int i = 0; i<size;i++) {
 			String current = storage.poll();
 			//if(current instanceof HealthyPeople || 
 					//current instanceof TreatedPeople) {
@@ -18,6 +15,7 @@ public class test {
 			//}
 			//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
 			Set<String> netWork = map.get(current); 
+			if (netWork == null) return count;
 			for(String each: netWork) {
 				//if(each instanceof UnhealthyPeople || each instanceof TreatedPeople) {
 					//continue;

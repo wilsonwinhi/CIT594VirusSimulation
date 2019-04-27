@@ -1,11 +1,14 @@
 package virusSimulation;
 import java.util.*;
 public class AdjPreprocess {
-	private int totalPeople = 0;
-	Set<String> peopleSet = new HashSet<>();
+	private Set<String> peopleSet;
+	private int totalPeopleNum;
+	public AdjPreprocess() {
+		peopleSet = new HashSet<>();
+		totalPeopleNum = 0;
+	}
     public Map<String, Set<String>> adjPreprocess(List<String> s) {
     	Map<String, Set<String>> adjList = new HashMap<>();
-    	System.out.println(s.get(0));
 		for(String each: s) {
 			String[] people = each.split("\\s+");
 			if (!adjList.containsKey(people[0])) {
@@ -15,12 +18,12 @@ public class AdjPreprocess {
 			peopleSet.add(people[0]);
 			peopleSet.add(people[1]);
 		}
-		totalPeople = peopleSet.size();
+		totalPeopleNum = adjList.size();
 		return adjList;
     }
 
 	public int getTotalPeople() {
 		// TODO Auto-generated method stub
-		return totalPeople;
+		return totalPeopleNum;
 	}
 }
