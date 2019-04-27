@@ -1,4 +1,3 @@
-
 package virusSimulation;
 
 import java.util.*;
@@ -27,6 +26,7 @@ public class Simulation {
 		int seedNum = Integer.parseInt(args[1]);
 		/* how many days? */
 		int days = Integer.parseInt(args[2]);
+		Random random = new Random();
 		
 		/* create seed into queue */
 		Queue<People> q = new LinkedList<>();
@@ -34,7 +34,6 @@ public class Simulation {
 		
 		boolean[] used = new boolean[totalPeople];
 		while (q.size() < seedNum) {
-			Random random = new Random();
 			int val = random.nextInt(totalPeople);
 			if (!used[val]) {
 				People toPut = adjList.get(val);
@@ -67,10 +66,11 @@ public class Simulation {
 				if(each.isTreated==true || each.isHealthy==false) {
 					continue;
 				}
-				double eachResistance = each.getResistence();
-				double overall = eachResistance*virusProb;
-				int randomNumber = random.nextInt(101);
-				if(randomNumber<overall*100) {
+				// double eachResistance = each.getResistence();
+				double overall = probability;
+				
+				int randomNumber = random.nextInt(100);
+				if(randomNumber<=overall*100) {
 					infectedPeopleNum++;
 					each.gotInfected();
 					q.offer(each);
