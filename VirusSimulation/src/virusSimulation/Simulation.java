@@ -1,3 +1,4 @@
+
 package virusSimulation;
 
 import java.util.*;
@@ -66,14 +67,14 @@ public class Simulation {
 				if(each.isTreated==true || each.isHealthy==false) {
 					continue;
 				}
-				//double eachResistance = ((HealthyPeople)each).resistence;
-				//double overall = eachResistance*virusProb;
-				//int randomNumber = random.nextInt(101);
-				//if(randomNumber<overall*100) {
+				double eachResistance = each.getResistence();
+				double overall = eachResistance*virusProb;
+				int randomNumber = random.nextInt(101);
+				if(randomNumber<overall*100) {
 					infectedPeopleNum++;
 					each.gotInfected();
 					q.offer(each);
-				//}
+				}
 				
 			}
 //			System.out.println("current size is "+storage.size());
