@@ -1,5 +1,5 @@
 package virusSimulation;
 
-public class Virus {
+public interface Virus {
 
 }
