@@ -1,7 +1,6 @@
-package hangman;
+package virusSimulation;
 import java.util.*;
 import java.io.*;
-import java.util.*;
 
 public class FileReaderTxt {
 
@@ -19,8 +18,8 @@ public class FileReaderTxt {
 	 * This method helps get the words list through reading the txt file
 	 * @return the words arrayList
 	 */
-	public ArrayList<String> getAllLines() {
-		ArrayList<String> lines = new ArrayList<String>();
+	public List<String> getAllLines() {
+		List<String> lines = new ArrayList<String>();
 		try {
 			File wordsFile = new File(nameOfFile);
 			Scanner scanner = new Scanner(wordsFile);
@@ -37,13 +36,4 @@ public class FileReaderTxt {
 		}
 		return lines;
 	}
-	
-//	public static void main(String[] args) {
-//		FileReaderTxt test = new FileReaderTxt("Document.txt");
-//		ArrayList<String> answer = test.getAllLines();
-//		for(String each: answer) {
-//			String[] array = each.split("\\s+");
-//			System.out.println(array[0]);
-//		}
-//	}
 }
