@@ -1,10 +1,10 @@
 package virusSimulation;
 
 public interface Virus {
-
+	
 
     
-    public boolean setProbability(double d);
+    public void setProbability(double d);
     
     
     public double getProbability();
@@ -12,8 +12,4 @@ public interface Virus {
 
     public void setVirusName(String name);
 
-
-    public double mutateToStrong();
-    
-    public double mutateToWeak();
 }

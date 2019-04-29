@@ -1,35 +1,55 @@
 package virusSimulation;
 
 public class mutableVirus implements Virus {
+	
+	double probability;
+	String name;
 
-	@Override
-	public boolean setProbability(double d) {
+	public mutableVirus(double probability, String name) {
+		this.probability = probability;
+		this.name = name;
+	}
+	
+	public void setProbability(double d) {
 		// TODO Auto-generated method stub
-		return false;
+		this.probability= d;
 	}
 
-	@Override
 	public double getProbability() {
-		// TODO Auto-generated method stub
-		return 0;
+		return probability;
 	}
 
 	@Override
 	public void setVirusName(String name) {
 		// TODO Auto-generated method stub
+		this.name = name;
 		
 	}
 
-	@Override
 	public double mutateToStrong() {
 		// TODO Auto-generated method stub
-		return 0;
+		double mute = probability+0.5;
+		if(mute>1) {
+			this.probability = 1;
+			mute = 1;
+		}
+		else {
+			this.probability = mute;
+		}
+		return mute;
 	}
 
-	@Override
 	public double mutateToWeak() {
 		// TODO Auto-generated method stub
-		return 0;
+		double mute = probability-0.5;
+		if(mute<0) {
+			this.probability = 0;
+			mute = 0;
+		}
+		else {
+			this.probability = mute;
+		}
+		return mute;
 	}
     
 }

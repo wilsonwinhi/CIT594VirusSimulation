@@ -2,34 +2,32 @@ package virusSimulation;
 
 public class unmutableVirus implements Virus {
 
+	double probability;
+	String name;
+
+	public unmutableVirus(double probability, String name) {
+		this.probability = probability;
+		this.name = name;
+	}
+	
 	@Override
-	public boolean setProbability(double d) {
+	public void setProbability(double d) {
 		// TODO Auto-generated method stub
-		return false;
+		this.probability = d;
 	}
 
 	@Override
 	public double getProbability() {
 		// TODO Auto-generated method stub
-		return 0;
+		return this.probability;
 	}
 
 	@Override
 	public void setVirusName(String name) {
 		// TODO Auto-generated method stub
+		this.name = name;
 		
 	}
 
-	@Override
-	public double mutateToStrong() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
-
-	@Override
-	public double mutateToWeak() {
-		// TODO Auto-generated method stub
-		return 0;
-	}
 
 }
