@@ -6,12 +6,27 @@ public class test {
 	int infectedPeopleNum;
 	Random random;
 	List<Integer> resOfInfectedPpl;
+	
+	
+	/**
+	 * This is the constructor of the class test
+	 */
 	public test() {
 		random = new Random();
 		infectedPeopleNum = 0;
 		resOfInfectedPpl = new ArrayList<>();
 	}
-	public List<Integer> BFS1Round(Queue<People> q, double probability, int days, List<People> adjList) {
+
+	
+	/**
+	 * 
+	 * @param q: the queue of people 
+	 * @param probability: probability of spread of virus
+	 * @param days: the number of iterations of virus infection
+	 * @param adjList: the list contains all People vertex 
+	 * @return The list of number of infected people after each iteration 
+	 */
+	public List<Integer> BFS(Queue<People> q, double probability, int days, List<People> adjList) {
 		for(int j = 0;j<days;j++) {
 			int size = q.size();
 			System.out.println("Size: " + size);
@@ -21,8 +36,10 @@ public class test {
 				List<People> netWork = current.getSocialNetwork();
 				List<People> network = new ArrayList<>();
 				for (People each : netWork) {
+					System.out.println("nei "+each.getName());
 					int val = netWork.indexOf(new People(each.getName()));
 					People toPut = adjList.get(val);
+					System.out.println("toput "+toPut.getName());
 					network.add(toPut);
 				}
 				System.out.println("network-> " + netWork.size());
