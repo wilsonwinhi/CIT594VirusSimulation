@@ -30,8 +30,12 @@ public class AdjPreprocess {
 			if (!adjList.contains(firstPpl)) {
 				adjList.add(firstPpl);
 			}
+			if (!adjList.contains(secondPpl)) {
+				adjList.add(secondPpl);
+			}
 			
-			adjList.get(adjList.indexOf(firstPpl)).addPeople(secondPpl);
+			People toAdd = adjList.indexOf(firstPpl) == -1 ? secondPpl : adjList.get(adjList.indexOf(secondPpl));
+			adjList.get(adjList.indexOf(firstPpl)).addPeople(toAdd);
 			
 			peopleSet.add(firstPpl);
 			peopleSet.add(secondPpl);
