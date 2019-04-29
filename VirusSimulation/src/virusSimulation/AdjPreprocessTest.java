@@ -1,8 +1,8 @@
 package virusSimulation;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import java.util.*;
 
 public class AdjPreprocessTest {
@@ -17,7 +17,7 @@ public class AdjPreprocessTest {
 		edges.add("2   3");
 		edges.add("2    4");
 		List<People> answer = test.adjPreprocess(edges);
-		assertEquals(answer.size(),2);
+		assertEquals(answer.size(),4);
 		assertTrue(answer.get(0).getName().equals("1"));
 		assertTrue(answer.get(1).getName().equals("2"));
 		assertEquals(answer.get(1).getSocialNetwork().size(),2);
@@ -34,7 +34,7 @@ public class AdjPreprocessTest {
 		edges.add("1 2");
 		edges.add("1  3");
 		List<People> answer = test.adjPreprocess(edges);
-		assertEquals(test.getTotalPeople(),1);
+		assertEquals(test.getTotalPeople(),3);
 		assertTrue(answer.get(0).getName().equals("1"));
 	}
 
