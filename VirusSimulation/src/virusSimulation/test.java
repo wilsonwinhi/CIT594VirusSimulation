@@ -3,37 +3,47 @@ package virusSimulation;
 import java.util.*;
 
 public class test {
-	public int BFS1Round(Queue<People> storage, double virusProb) {
-		int count = 0;
-		//Random random = new Random();
-		int size = storage.size();
-		System.out.println("size" + size + " ");
-		for(int i = 0;i<size;i++) {
-			People current = storage.poll();
-			if(current.isHealthy==true || 
-					current.isTreated==true) {
-				continue;
-			}
-			//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
-			List<People> netWork = current.getSocialNetwork(); 
-//			System.out.println(netWork);
-			for(People each: netWork) {
-				if(each.isTreated==true || each.isHealthy==false) {
-					continue;
+	int infectedPeopleNum;
+	Random random;
+	List<Integer> resOfInfectedPpl;
+	public test() {
+		random = new Random();
+		infectedPeopleNum = 0;
+		resOfInfectedPpl = new ArrayList<>();
+	}
+	public List<Integer> BFS1Round(Queue<People> q, double probability, int days, List<People> adjList) {
+		for(int j = 0;j<days;j++) {
+			int size = q.size();
+			System.out.println("Size: " + size);
+			for(int i = 0;i<size;i++) {
+				People current = q.poll();
+				//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
+				List<People> netWork = current.getSocialNetwork();
+				List<People> network = new ArrayList<>();
+				for (People each : netWork) {
+					int val = netWork.indexOf(new People(each.getName()));
+					People toPut = adjList.get(val);
+					network.add(toPut);
 				}
-				//double eachResistance = ((HealthyPeople)each).resistence;
-				//double overall = eachResistance*virusProb;
-				//int randomNumber = random.nextInt(101);
-				//if(randomNumber<overall*100) {
-					count++;
-					each.gotInfected();
-					storage.offer(each);
-				//}
-				
+				System.out.println("network-> " + netWork.size());
+				for(People each: netWork) {
+					if(each.isTreated==true || each.isHealthy==false) {
+						continue;
+					}
+					// double eachResistance = each.getResistence();
+					double overall = probability;
+					
+					int randomNumber = random.nextInt(100);
+					if(randomNumber<=overall*100) {
+						infectedPeopleNum++;
+						each.gotInfected();
+						q.offer(each);
+					}
+					
+				}
 			}
-//			System.out.println("current size is "+storage.size());
-			
+			resOfInfectedPpl.add(infectedPeopleNum);
 		}
-		return count;
+		return resOfInfectedPpl;
 	}
 }

@@ -46,54 +46,14 @@ public class Simulation {
 				used[val] = true;
 			}
 			
-			int infectedPeopleNum = 0 + seedNum;
-			//test bfs = new test();
-			List<Integer> resOfInfectedPpl = new ArrayList<>();
+			test bfs = new test();
+			List<Integer> resOfInfectedPpl = bfs.BFS1Round(q, probability, days, adjList);
 	//		System.out.println("total people: " + totalPeople);
 	//		/* run bfs */
 	//		for (int i = 0; i < days; i++) {
 	//			infectedPeopleNum += bfs.BFS1Round(q, probability);
 	//			System.out.println(infectedPeopleNum);
 	//		}
-			System.out.println(infectedPeopleNum);
-			// BFS1Round
-			for(int j = 0;j<days;j++) {
-				int size = q.size();
-				System.out.println("Size: " + size);
-				for(int i = 0;i<size;i++) {
-					People current = q.poll();
-					//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
-					List<People> netWork = current.getSocialNetwork();
-					List<People> network = new ArrayList<>();
-					for (People each : netWork) {
-						int val = netWork.indexOf(new People(each.getName()));
-						People toPut = adjList.get(val);
-						network.add(toPut);
-					}
-					System.out.println("network-> " + netWork.size());
-					for(People each: netWork) {
-						if(each.isTreated==true || each.isHealthy==false) {
-							continue;
-						}
-						// double eachResistance = each.getResistence();
-						double overall = probability;
-						
-						int randomNumber = random.nextInt(100);
-						if(randomNumber<=overall*100) {
-							infectedPeopleNum++;
-							each.gotInfected();
-							q.offer(each);
-						}
-						
-					}
-	//				System.out.println("current size is "+storage.size());
-					//System.out.println(infectedPeopleNum);
-				}
-	//			System.out.println("current size is "+storage.size());
-				System.out.println(infectedPeopleNum);
-				resOfInfectedPpl.add(infectedPeopleNum);
-			}
-//		doPlot()
 		
 			Plot plot = Plot.plot(Plot.plotOpts().
 			        title("Virus Simulation").
