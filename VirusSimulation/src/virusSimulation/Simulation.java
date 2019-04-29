@@ -2,6 +2,11 @@ package virusSimulation;
 
 import java.util.*;
 
+import virusSimulation.Plot.Data;
+
+import java.awt.Color;
+import java.io.IOException;
+
 public class Simulation {
 	public static void main(String[] args) {
 		int argc = args.length;
@@ -44,7 +49,8 @@ public class Simulation {
 		}
 		
 		int infectedPeopleNum = 0 + seedNum;
-		test bfs = new test();
+		//test bfs = new test();
+		List<Integer> resOfInfectedPpl = new ArrayList<>();
 //		System.out.println("total people: " + totalPeople);
 //		/* run bfs */
 //		for (int i = 0; i < days; i++) {
@@ -62,6 +68,7 @@ public class Simulation {
 			//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
 			List<People> netWork = current.getSocialNetwork(); 
 //			System.out.println(netWork);
+			
 			for(People each: netWork) {
 				if(each.isTreated==true || each.isHealthy==false) {
 					continue;
@@ -75,10 +82,39 @@ public class Simulation {
 					each.gotInfected();
 					q.offer(each);
 				}
-				
 			}
 //			System.out.println("current size is "+storage.size());
-			System.out.println(infectedPeopleNum);
+//			System.out.println(infectedPeopleNum);
+			resOfInfectedPpl.add(infectedPeopleNum);
+		}
+		Plot plot = Plot.plot(Plot.plotOpts().
+		        title("Virus Simulation").
+		        legend(Plot.LegendFormat.BOTTOM)).
+		    xAxis("x", Plot.axisOpts().
+		        range(0, days)).
+		    yAxis("y", Plot.axisOpts().
+		        range(0, 1000));
+		Data d = Plot.data();
+		for (int i = 0; i < resOfInfectedPpl.size(); i++) {
+			d = d.xy(i, resOfInfectedPpl.get(i));
+		}
+		plot.series("Data", d, Plot.seriesOpts().
+		            marker(Plot.Marker.DIAMOND).
+		            markerColor(Color.GREEN).
+		            color(Color.BLACK));
+		//.series("Data", Plot.data().
+//		        xy(1, 2).
+//		        xy(3, 4),
+//		        Plot.seriesOpts().
+//		            marker(Plot.Marker.DIAMOND).
+//		            markerColor(Color.GREEN).
+//		            color(Color.BLACK));
+
+		try {
+			plot.save("virus_simulation", "png");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 	}
 }
