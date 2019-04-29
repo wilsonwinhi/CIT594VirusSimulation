@@ -7,20 +7,11 @@ public class AdjPreprocess {
 		peopleSet = new HashSet<>();
 		totalPeopleNum = 0;
 	}
-//    public Map<String, Set<String>> adjPreprocess(List<String> s) {
-//    	Map<String, Set<String>> adjList = new HashMap<>();
-//		for(String each: s) {
-//			String[] people = each.split("\\s+");
-//			if (!adjList.containsKey(people[0])) {
-//				adjList.put(people[0], new HashSet<>());
-//			}
-//			adjList.get(people[0]).add(people[1]);
-//			peopleSet.add(people[0]);
-//			peopleSet.add(people[1]);
-//		}
-//		totalPeopleNum = adjList.size();
-//		return adjList;
-//    }
+	/*
+	 * convert list of strings to adjacency list of the graph
+	 * each people has builtin neighbors
+	 * @return List of People
+	 */
     public List<People> adjPreprocess(List<String> s) {
     	List<People> adjList = new LinkedList<>();
 		for(String each: s) {
@@ -45,6 +36,9 @@ public class AdjPreprocess {
 		return adjList;
     }
 
+    /*
+     * @return total number of people in the graph
+     */
 	public int getTotalPeople() {
 		// TODO Auto-generated method stub
 		return totalPeopleNum;

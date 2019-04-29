@@ -8,6 +8,14 @@ import java.awt.Color;
 import java.io.IOException;
 
 public class Simulation {
+	/*
+	 * main method that runs the virus simulation
+	 * 1st argument: virus infectious probability
+	 * 2nd argument: seed of the initial infected people
+	 * 3rd argument: number of days to simulate
+	 * 4th argument: number of times for simulation
+	 * @return: percentage of infected people changed with number of days 
+	 */
 	public static void main(String[] args) {
 		int argc = args.length;
 		FileReaderTxt myText = new FileReaderTxt("facebook_combined (1).txt");
@@ -75,7 +83,7 @@ public class Simulation {
 				plot.save("virus_simulation" + "_" + r, "png");
 			} catch (IOException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				e.printStackTrace(); 
 			}
 			/* reset unhealthy to healthy */
 			for (People p : adjList) {
