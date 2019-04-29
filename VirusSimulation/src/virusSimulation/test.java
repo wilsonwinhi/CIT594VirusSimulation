@@ -19,7 +19,7 @@ public class test {
 
 	
 	/**
-	 * 
+	 * This function aims calculate the number of infected people after each iteration
 	 * @param q: the queue of people 
 	 * @param probability: probability of spread of virus
 	 * @param days: the number of iterations of virus infection
