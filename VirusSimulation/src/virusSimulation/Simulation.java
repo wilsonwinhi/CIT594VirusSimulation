@@ -2,13 +2,49 @@ package virusSimulation;
 
 import java.util.*;
 
-import virusSimulation.Plot.Data;
-
-import java.awt.Color;
-import java.io.IOException;
-
 public class Simulation {
+	
+	Queue<People> storage;
+	Random random;
+	
+	
+	public Simulation() {
+		storage = new LinkedList<>();
+		random = new Random();
+	}
+	
+	public int bfs1Round(double virusProb) {
+		int count = 0;
+		int size = storage.size();
+		for(int i = 0;i<size;i++) {
+			People current = storage.poll();
+			//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
+			List<People> netWork = current.getSocialNetwork(); 
+//			System.out.println(netWork);
+			for(People each: netWork) {
+				if(each.isTreated==true || each.isHealthy==false) {
+					continue;
+				}
+				// double eachResistance = each.getResistence();
+				double overall = virusProb;
+				
+				int randomNumber = random.nextInt(100);
+				if(randomNumber<=overall*100) {
+					count++;
+					each.gotInfected();
+					storage.offer(each);
+				}
+				
+			}
+//			System.out.println("current size is "+storage.size());
+			//System.out.println(infectedPeopleNum);
+		}
+		return count;
+	}
+	
+	
 	public static void main(String[] args) {
+		Simulation test = new Simulation();
 		int argc = args.length;
 		FileReaderTxt myText = new FileReaderTxt("facebook_combined (1).txt");
 		List<String> textList = myText.getAllLines();
@@ -50,7 +86,6 @@ public class Simulation {
 		
 		int infectedPeopleNum = 0 + seedNum;
 		//test bfs = new test();
-		List<Integer> resOfInfectedPpl = new ArrayList<>();
 //		System.out.println("total people: " + totalPeople);
 //		/* run bfs */
 //		for (int i = 0; i < days; i++) {
@@ -60,61 +95,7 @@ public class Simulation {
 		
 		// BFS1Round
 		for(int i = 0;i<days;i++) {
-			People current = q.poll();
-			if(current.isHealthy==true || 
-					current.isTreated==true) {
-				continue;
-			}
-			//List<People> netWork = ((UnhealthyPeople)current).socialNetwork;
-			List<People> netWork = current.getSocialNetwork(); 
-//			System.out.println(netWork);
-			
-			for(People each: netWork) {
-				if(each.isTreated==true || each.isHealthy==false) {
-					continue;
-				}
-				// double eachResistance = each.getResistence();
-				double overall = probability;
-				
-				int randomNumber = random.nextInt(100);
-				if(randomNumber<=overall*100) {
-					infectedPeopleNum++;
-					each.gotInfected();
-					q.offer(each);
-				}
-			}
-//			System.out.println("current size is "+storage.size());
-//			System.out.println(infectedPeopleNum);
-			resOfInfectedPpl.add(infectedPeopleNum);
-		}
-		Plot plot = Plot.plot(Plot.plotOpts().
-		        title("Virus Simulation").
-		        legend(Plot.LegendFormat.BOTTOM)).
-		    xAxis("x", Plot.axisOpts().
-		        range(0, days)).
-		    yAxis("y", Plot.axisOpts().
-		        range(0, 1000));
-		Data d = Plot.data();
-		for (int i = 0; i < resOfInfectedPpl.size(); i++) {
-			d = d.xy(i, resOfInfectedPpl.get(i));
-		}
-		plot.series("Data", d, Plot.seriesOpts().
-		            marker(Plot.Marker.DIAMOND).
-		            markerColor(Color.GREEN).
-		            color(Color.BLACK));
-		//.series("Data", Plot.data().
-//		        xy(1, 2).
-//		        xy(3, 4),
-//		        Plot.seriesOpts().
-//		            marker(Plot.Marker.DIAMOND).
-//		            markerColor(Color.GREEN).
-//		            color(Color.BLACK));
-
-		try {
-			plot.save("virus_simulation", "png");
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			infectedPeopleNum += test.bfs1Round(probability);
 		}
 	}
 }
