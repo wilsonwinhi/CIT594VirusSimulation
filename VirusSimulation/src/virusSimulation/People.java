@@ -11,7 +11,7 @@ public class People implements Node{
 	
 	/**
 	 *  This is the constructor
-	 * @param name
+	 * @param name: the name of people
 	 */
 	public People(String name) {
 		this.name = name;
@@ -54,7 +54,7 @@ public class People implements Node{
 	
 	/**
 	 * This is the setter of resistence
-	 * @param the value of resistence
+	 * @param value: the value of resistence
 	 */
 	public void setResistence(double value) {
 		this.resistence = value;
@@ -62,7 +62,7 @@ public class People implements Node{
 	
 	/**
 	 * This is the setter of socialNetwork
-	 * @param the list of socialNetwork
+	 * @param  network: the list of socialNetwork
 	 */
 	public void setNetwork(List<People> network) {
 		this.socialNetwork = network;
@@ -70,7 +70,7 @@ public class People implements Node{
 	
 	/**
 	 * This function aims add a people into a this person's socialNerwork
-	 * @param People p
+	 * @param  p: people to add
 	 */
 	public void addPeople(People p) {
 		socialNetwork.add(p);

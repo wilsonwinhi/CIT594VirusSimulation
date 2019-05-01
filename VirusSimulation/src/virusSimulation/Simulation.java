@@ -8,14 +8,7 @@ import java.awt.Color;
 import java.io.IOException;
 
 public class Simulation {
-	/*
-	 * main method that runs the virus simulation
-	 * 1st argument: virus infectious probability
-	 * 2nd argument: seed of the initial infected people
-	 * 3rd argument: number of days to simulate
-	 * 4th argument: number of times for simulation
-	 * @return: percentage of infected people changed with number of days 
-	 */
+	
 	public static void main(String[] args) {
 		int argc = args.length;
 		FileReaderTxt myText = new FileReaderTxt("facebook_combined (1).txt");
@@ -38,9 +31,10 @@ public class Simulation {
 		/* how many simulation times */
 		int times = Integer.parseInt(args[3]);
 		for (int r = 0; r < times; r++) {
+			
+			
 			/* create seed into queue */
 			Queue<People> q = new LinkedList<>();
-			
 			
 			boolean[] used = new boolean[totalPeople];
 			while (q.size() < seedNum) {
@@ -54,15 +48,11 @@ public class Simulation {
 				used[val] = true;
 			}
 			
+			/* run bfs */
 			test bfs = new test();
-			List<Integer> resOfInfectedPpl = bfs.BFS1Round(q, probability, days, adjList);
-	//		System.out.println("total people: " + totalPeople);
-	//		/* run bfs */
-	//		for (int i = 0; i < days; i++) {
-	//			infectedPeopleNum += bfs.BFS1Round(q, probability);
-	//			System.out.println(infectedPeopleNum);
-	//		}
+			List<Integer> resOfInfectedPpl = bfs.BFS(q, probability, days, adjList);
 		
+			/* plot */
 			Plot plot = Plot.plot(Plot.plotOpts().
 			        title("Virus Simulation").
 			        legend(Plot.LegendFormat.BOTTOM)).

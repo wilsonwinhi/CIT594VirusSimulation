@@ -8,7 +8,7 @@ public class FileReaderTxt {
 
 	/**
 	 * This is the constructor
-	 * @param nameOfFile
+	 * @param nameOfFile: file of name 
 	 */
 	public FileReaderTxt(String nameOfFile) {
 		this.nameOfFile = nameOfFile;

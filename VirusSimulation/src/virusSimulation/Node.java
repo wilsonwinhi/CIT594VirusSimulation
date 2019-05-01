@@ -12,7 +12,7 @@ public interface Node {
 	
 	/**
 	 * This function aims to override the equals method
-	 * @param Object o
+	 * @param o to compare 
 	 * @return boolean that represents whether two objects are the same
 	 */
 	public boolean equals(Object o); 

@@ -7,9 +7,10 @@ public class AdjPreprocess {
 		peopleSet = new HashSet<>();
 		totalPeopleNum = 0;
 	}
-	/*
-	 * convert list of strings to adjacency list of the graph
+	/**
+	 * convert list of strings to adjacency list of the graph 
 	 * each people has builtin neighbors
+	 * @param s: string read from the file
 	 * @return List of People
 	 */
     public List<People> adjPreprocess(List<String> s) {
@@ -36,7 +37,8 @@ public class AdjPreprocess {
 		return adjList;
     }
 
-    /*
+    /**
+     * 
      * @return total number of people in the graph
      */
 	public int getTotalPeople() {
