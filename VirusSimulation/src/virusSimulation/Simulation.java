@@ -29,6 +29,8 @@ public class Simulation {
 		int seedNum = newScanner.nextInt();
 		System.out.println("Please provide the number of days you want to simulate:");
 		int days = newScanner.nextInt();
+		System.out.println("Please provide the cure Capacity:");
+		int cureCapacity = newScanner.nextInt();
 		
 		/* preprocess to adjacency list */
 		List<People> adjList = preprocessMachine.adjPreprocess(textList);
@@ -79,8 +81,9 @@ public class Simulation {
 			
 			
 			List<Integer> resOfInfectedPpl = bfs.BFS(q, virus, days, adjList);
-			List<Integer> resOfInfectedPp2 = bfs2.BFSwithTreatment1(q2,virus, days,adjList2,randomSelect);
-			List<Integer> resOfInfectedPp3 = bfs3.BFSwithTreatment2(q3,virus, days,adjList3);
+			List<Integer> resOfInfectedPp2 = bfs2.BFSwithTreatment1(q2,virus, days,adjList2, cureCapacity);
+			List<Integer> resOfInfectedPp3 = bfs3.BFSwithTreatment2(q3,virus, days,adjList3,cureCapacity);
+			
 	//		System.out.println("total people: " + totalPeople);
 	//		/* run bfs */
 	//		for (int i = 0; i < days; i++) {

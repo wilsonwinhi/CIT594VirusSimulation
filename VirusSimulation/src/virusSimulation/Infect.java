@@ -1,6 +1,7 @@
 package virusSimulation;
 
 import java.util.*;
+import java.util.PriorityQueue;
 
 public class Infect {
 	//int infectedPeopleNum;
@@ -72,7 +73,7 @@ public class Infect {
 
 
 	public List<Integer> BFSwithTreatment1(Queue<People> q, Virus virus, int days,
-											List<People> adjList,List<People> treatment){
+											List<People> adjList, int cureCapacity){
 
 		if(days<=3) {
 			return BFS(q,virus,3,adjList);
@@ -81,9 +82,6 @@ public class Infect {
 			for(int j = 0;j<days;j++) {
 				int size = q.size();
 				//System.out.println("Size: " + size);
-				if(j==1) {
-					giveTreatMent(treatment);
-				}
 				for(int i = 0;i<size;i++) {
 					People current = q.poll();
 					if(current.isHealthy==true||current.isTreated == true) {
@@ -118,17 +116,17 @@ public class Infect {
 				}
 				
 				int counter = 0;
-				while(!q.isEmpty() && (counter < 30)) {
+				PriorityQueue<People> pq = new PriorityQueue<People>(q);
+				while(!pq.isEmpty() && (counter < cureCapacity)) {
 					
-					People cur = q.poll();
+					People cur = pq.poll();
+					q.remove(cur);
 					if(!cur.isHealthy && !cur.isTreated) {
 						cur.isTreated = true;
 						cur.isHealthy = true;
 						//infectedPeopleNum --;
 						counter ++;
-						
 					}
-					
 				}
 				resOfInfectedPpl.add(q.size());
 			}
@@ -163,7 +161,7 @@ public class Infect {
 
 
 	public List<Integer> BFSwithTreatment2(Queue<People> q,  Virus virus, int days,
-			List<People> adjList){
+			List<People> adjList, int cureCapacity){
 		if(days<=3) {
 			return BFS(q,virus,3,adjList);
 		}
@@ -211,8 +209,11 @@ public class Infect {
 					}
 		}
 				int counter = 0;
-				while(!q.isEmpty() && (counter < 30)) {
+				PriorityQueue<People> pq = new PriorityQueue<People>(q);
+				//People cur = pq.poll();
+				while(!q.isEmpty() && (counter < cureCapacity)) {
 					People cur = q.poll();
+					q.remove(cur);
 					cur.isTreated = true;
 					cur.isHealthy = true;
 					//infectedPeopleNum --;
