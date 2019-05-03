@@ -45,8 +45,7 @@ The final step is to conclude the simulation by providing statistics of the simu
 The group will import hundreds of edges (communications between two people) and transform them into a graph in the form of adjacent lists. The “graph” data structure will implemented by the group. 
 ## Queue
 The main strategy to perform the “infection” is to use the algorithm of “Breadth First Search” since the group want to simulate the separation of virus for each day. In the programming, each day can be treated as each iteration and bfs provides a way to deal with the nodes at the same level at the same time. In order to perform bfs, the data structure queue is needed. The group will directly use the interface Queue in the java build-in library.
-## HashMap
-The group also needs to calculate the probability of people are infected. So after each iteration, the group still needs to traverse the graph again to statistical the number of healthy people, unhealthy people and treated people. In this case, The data structure of HashMap<People, Integer> is a good choice. The group will directly use the class HashMap in the java build-in library.
+
 ## List 
 Since the graph is in the form of adjacent list, data structure List is necessary. Each neighbor will be stored in the global variable List<People> socialNetwork. The group will directly use the interface List in the java build-in library.
 
