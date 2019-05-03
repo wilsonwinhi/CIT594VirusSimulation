@@ -19,5 +19,9 @@ f.	Simaltanious Simulation of Spreading Process and Intervention Strategy
 
 g.	Result and Conclusion
 
+## Network Establishment
+The application will use an undirected graph from Stanford large dataset collection (http://snap.stanford.edu/data/#socnets) to establish the network and simulate the interaction and relationships(edges) between objects(nodes) within the network.
+
+
 
 ![alt text](https://github.com/wilsonwinhi/CIT594VirusSimulation/blob/master/virus_simulation.png)
