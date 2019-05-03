@@ -17,7 +17,7 @@ public class People implements Node{
 		this.name = name;
 		isHealthy = true;
 		isTreated = false;
-		socialNetwork = new ArrayList<>();
+		socialNetwork = new ArrayList<>(); 
 	}
 	
 	
