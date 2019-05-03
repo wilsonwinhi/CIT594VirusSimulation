@@ -18,3 +18,6 @@ e.	Intervention Strategy Development
 f.	Simaltanious Simulation of Spreading Process and Intervention Strategy
 
 g.	Result and Conclusion
+
+
+![alt text](https://github.com/wilsonwinhi/CIT594VirusSimulation/blob/master/virus_simulation.png)
