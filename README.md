@@ -6,9 +6,15 @@ In addition to the spread simulation, the simulation also takes intervention pro
 ## Description of the problem
 	The whole process is composed of steps as followed:
 a.	Network Establishment
+
 b.	Virus Parameter Setting
+
 c.	Infective Object Parameter Setting
+
 d.	Early Stage of Spreading (without intervention)
+
 e.	Intervention Strategy Development
+
 f.	Simaltanious Simulation of Spreading Process and Intervention Strategy
+
 g.	Result and Conclusion
