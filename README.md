@@ -50,5 +50,8 @@ The group also needs to calculate the probability of people are infected. So aft
 ## List 
 Since the graph is in the form of adjacent list, data structure List is necessary. Each neighbor will be stored in the global variable List<People> socialNetwork. The group will directly use the interface List in the java build-in library.
 
+# Result
 
 ![alt text](https://github.com/wilsonwinhi/CIT594VirusSimulation/blob/master/virus_simulation.png)
+
+from above result, we can found out that K-Shell method with K = 40 has an edge on preventing the virus spread in our network.
