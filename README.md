@@ -50,6 +50,15 @@ The group also needs to calculate the probability of people are infected. So aft
 ## List 
 Since the graph is in the form of adjacent list, data structure List is necessary. Each neighbor will be stored in the global variable List<People> socialNetwork. The group will directly use the interface List in the java build-in library.
 
+# How to run
+
+After running our program, it will prompt you to enter three of the inputs to begin simulation. 
+
+## Input
+1. probability of the disease: a double between 0 and 1
+2. seed number larger than 0 and smaller than 3300
+3. a positive number of days
+
 # Result
 
 ![alt text](https://github.com/wilsonwinhi/CIT594VirusSimulation/blob/master/virus_simulation.png)
