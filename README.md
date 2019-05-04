@@ -51,7 +51,7 @@ Since the graph is in the form of adjacent list, data structure List is necessar
 
 # How to run
 
-After running our program, it will prompt you to enter three of the inputs to begin simulation. 
+After running Simulation.java, it will prompt you to enter three of the inputs to begin simulation. 
 Three inputs are, the probability of disease, the number of seeds (the number of people initially infected) and the number of days, after entering all three inputs in console, the simulation graph will be automatically generated. 
 
 ## Input
