@@ -15,8 +15,5 @@ public interface Node {
 	 * @param o to compare 
 	 * @return boolean that represents whether two objects are the same
 	 */
-	public boolean equals(Object o);
-
-
-	int compareTo(People b); 
+	public boolean equals(Object o); 
 }

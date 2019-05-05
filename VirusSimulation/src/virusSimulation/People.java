@@ -2,7 +2,7 @@ package virusSimulation;
 
 import java.util.*;
 
-public class People implements Comparable, Node{
+public class People implements Node{
 	String name;
 	double resistence;
 	List<People> socialNetwork;
@@ -104,30 +104,4 @@ public class People implements Comparable, Node{
 //		People current = (People) o;
 //		return this.name.equals(current.name);
 //	}
-
-
-
-
-	@Override
-	public int compareTo(Object o) {
-		// TODO Auto-generated method stub
-		int sizeA = this.getSocialNetwork().size();
-		int sizeB = ((People)o).getSocialNetwork().size();
-		return Integer.compare(sizeA, sizeB);
-		
-	}
-	
-
-
-	@Override
-	public int compareTo(People b) {
-		int sizeA = this.getSocialNetwork().size();
-		int sizeB = b.getSocialNetwork().size();
-		return Integer.compare(sizeA, sizeB);
-	}
-
-
-
-
-
 }

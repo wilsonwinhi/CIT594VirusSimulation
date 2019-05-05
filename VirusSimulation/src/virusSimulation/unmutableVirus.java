@@ -10,11 +10,6 @@ public class unmutableVirus implements Virus {
 		this.name = name;
 	}
 	
-	public unmutableVirus(double probability) {
-		this.probability = probability;
-		//this.name = name;
-	}
-	
 	@Override
 	public void setProbability(double d) {
 		// TODO Auto-generated method stub
